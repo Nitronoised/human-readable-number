@@ -1,5 +1,6 @@
 
 module.exports = function toReadable(s) {
+  if (s === 0) { return 'zero' }
   var th = ['', 'thousand', 'million', 'billion', 'trillion'];
   var dg = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
   var tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
@@ -43,5 +44,9 @@ module.exports = function toReadable(s) {
     for (var i = x + 1; i < y; i++)
       str += dg[n[i]] + ' ';
   }
-  return str.replace(/\s+/g, ' ');
+  str.replace(/\s+/g, ' ');
+  let split = str.split("");
+  split.splice(str.length - 2, 2);
+  return split.join("")
 }
+
